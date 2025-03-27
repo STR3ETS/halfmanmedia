@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\cr;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Offerte;
 use App\Models\User;
 use Illuminate\Support\Str;
@@ -98,5 +99,16 @@ class OfferteController extends Controller
 
         session()->forget(['dienst', 'first_name', 'last_name', 'email', 'phone']);
         return view('offerte.bedankt', ['name' => $data['first_name']]);
+    }
+
+    public function show($id)
+    {
+        $offerte = Offerte::findOrFail($id);
+        $gebruiker = Auth::user();
+        $statusContactgegevens = [ 'contactgegevens' => $gebruiker->name && $gebruiker->email !== null ];
+        $statusBedrijfsinformatie = [ 'bedrijfsinformatie' => $offerte->bedrijfsnaam && $offerte->bedrijfsomschrijving && $offerte->kvk && $offerte->vestigingsadres !== null ];
+        $statusDoel = [ 'doel' => $offerte->doel && $offerte->doelgroep && $offerte->extra_wensen !== null ];
+        $statusBudget = [ 'budget' => $offerte->budget && $offerte->verwachting && $offerte->flexibel !== null ];
+        return view('klantenportaal.offerte-gegevens', compact('gebruiker', 'offerte', 'statusContactgegevens', 'statusBedrijfsinformatie', 'statusDoel', 'statusBudget'));
     }
 }

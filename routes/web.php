@@ -5,9 +5,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Offerte;
 use App\Http\Controllers\OfferteController;
+use App\Http\Controllers\OfferteAanvullenController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\BedrijfsinformatieController;
-use App\Http\Controllers\ContactgegevensController;
+
 
 Route::get('/', function () { return view('welcome'); });
 Route::get('/website', function () { return view('website'); });
@@ -26,7 +26,7 @@ Route::get('/klantenportaal/dashboard', function () {
         $gebruiker->omschrijving && 
         $gebruiker->kvk;
         return view('klantenportaal.dashboard', compact('gebruiker', 'offertes', 'bedrijfsinfoCompleet'));
-    })->middleware('auth')->name('klantenportaal.dashboard');
+})->middleware('auth')->name('klantenportaal.dashboard');
 
 Route::post('/logout', function (Request $request) {
     \Auth::logout();
@@ -35,9 +35,8 @@ Route::post('/logout', function (Request $request) {
     return redirect('/klantenportaal/login');
 })->name('logout');
 
-Route::post('/klantenportaal/bedrijfsinformatie/opslaan', [BedrijfsinformatieController::class, 'store'])->middleware('auth')->name('bedrijfsinformatie.opslaan');
-Route::post('/klantenportaal/contactgegevens/opslaan', [ContactgegevensController::class, 'store'])->middleware('auth')->name('contactgegevens.opslaan');
-
+Route::get('/klantenportaal/offerte/{id}', [OfferteController::class, 'show'])->name('offerte.show');
+Route::post('/klantenportaal/offerte/{id}/update', [OfferteAanvullenController::class, 'update'])->middleware('auth')->name('offerte.update');
 
 Route::get('/gratis-offerte', [OfferteController::class, 'index'])->name('offerte.index');
 Route::post('/gratis-offerte', [OfferteController::class, 'store'])->name('offerte.store');
