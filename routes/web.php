@@ -6,14 +6,18 @@ use Illuminate\Http\Request;
 use App\Models\Offerte;
 use App\Http\Controllers\OfferteController;
 use App\Http\Controllers\OfferteAanvullenController;
+use App\Http\Controllers\FacturatieController;
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AuthController;
 
-
+// PAGINA'S
 Route::get('/', function () { return view('welcome'); });
 Route::get('/website', function () { return view('website'); });
 Route::get('/webshop', function () { return view('webshop'); });
+// EINDE PAGINA'S
 
 
+// KLANTENPORTAAL
 Route::get('/klantenportaal/login', [AuthController::class, 'index'])->name('klantenportaal.login');
 Route::post('/klantenportaal/login', [AuthController::class, 'login'])->name('klantenportaal.login.submit');
 
@@ -28,19 +32,29 @@ Route::get('/klantenportaal/dashboard', function () {
         return view('klantenportaal.dashboard', compact('gebruiker', 'offertes', 'bedrijfsinfoCompleet'));
 })->middleware('auth')->name('klantenportaal.dashboard');
 
+Route::get('/klantenportaal/offerte/{id}', [OfferteController::class, 'show'])->name('offerte.show');
+Route::post('/klantenportaal/offerte/{id}/update', [OfferteAanvullenController::class, 'update'])->middleware('auth')->name('offerte.update');
+
+Route::get('/klantenportaal/facturatie', [FacturatieController::class, 'index'])->middleware('auth')->name('klantenportaal.facturatie');
+
+Route::get('/klantenportaal/account', [AccountController::class, 'index'])->middleware('auth')->name('klantenportaal.account');
+Route::post('/klantenportaal/account/wachtwoord-wijzigen', [AccountController::class, 'updatePassword'])->name('klantenportaal.account.passwordupdate');
+Route::post('/klantenportaal/account/contactgegevens-wijzigen', [AccountController::class, 'updateContactgegevens'])->name('klantenportaal.account.contactgegevensupdate');
+
 Route::post('/logout', function (Request $request) {
     \Auth::logout();
     $request->session()->invalidate();
     $request->session()->regenerateToken();
     return redirect('/klantenportaal/login');
 })->name('logout');
+// EINDE KLANTENPORTAAL
 
-Route::get('/klantenportaal/offerte/{id}', [OfferteController::class, 'show'])->name('offerte.show');
-Route::post('/klantenportaal/offerte/{id}/update', [OfferteAanvullenController::class, 'update'])->middleware('auth')->name('offerte.update');
 
+// OFFERTE
 Route::get('/gratis-offerte', [OfferteController::class, 'index'])->name('offerte.index');
 Route::post('/gratis-offerte', [OfferteController::class, 'store'])->name('offerte.store');
 Route::get('/gratis-offerte/gegevens', [OfferteController::class, 'gegevens'])->name('offerte.gegevens');
 Route::post('/gratis-offerte/gegevens', [OfferteController::class, 'gegevensStore'])->name('offerte.gegevens.store');
 Route::get('/gratis-offerte/overzicht', [OfferteController::class, 'finish'])->name('offerte.finish');
 Route::post('/gratis-offerte/verzenden', [OfferteController::class, 'verzenden'])->name('offerte.send');
+// EINDE OFFERTE

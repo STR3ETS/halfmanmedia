@@ -5,7 +5,7 @@
         <img src="/assets/halfmanmedia-logo-gold-white.png" alt="HalfmanMedia" class="max-w-[30px]">
     </a>
     <div class="w-full h-screen flex flex-col items-center justify-center text-white px-4">
-        <h1 id="greeting" class="text-2xl font-bold text-center text-white mb-[1.5rem] transition">Goeiedag!</h1>
+        <h1 id="greeting" class="text-2xl font-bold text-center text-white mb-[1.5rem] transition">Hallo!</h1>
         <form method="POST" action="{{ route('klantenportaal.login.submit') }}" class="bg-white rounded-[20px] p-[1.5rem] max-w-[400px] w-full text-black flex flex-col gap-[0.5rem]">
             @csrf
             @error('email')
@@ -28,14 +28,14 @@
     </div>
     <script>
         const greetings = [
-            'Goeiedag!',     // Nederlands
-            'Hello!',        // Engels
-            'Hola!',         // Spaans
-            'Bonjour!',      // Frans
-            'Hallo!',        // Duits
-            'Ciao!',         // Italiaans
-            'Olá!',          // Portugees
-            'Привет!'        // Russisch
+            'Hallo!',       // Nederlands
+            'Hello!',       // Engels
+            'Hola!',        // Spaans
+            'Bonjour!',     // Frans
+            'Ciao!',        // Italiaans
+            'Olá!',         // Portugees
+            'Привет!',      // Russisch
+            'Merhaba!'      // Turks
         ];
 
         let index = 0;

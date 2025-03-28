@@ -66,7 +66,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="py-[0.5rem] px-[0.9rem] bg-[#36291B] rounded-[5px] text-white text-[15px] font-semibold flex items-center leading-[1]">
+                        <a href="/klantenportaal/facturatie" class="py-[0.5rem] px-[0.9rem] bg-[#36291B] rounded-[5px] text-white text-[15px] font-semibold flex items-center leading-[1]">
                             <lord-icon class="mr-2"
                                 src="https://cdn.lordicon.com/xuyycdjx.json"
                                 trigger="hover"
@@ -77,7 +77,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="py-[0.5rem] px-[0.9rem] bg-[#36291B] rounded-[5px] text-white text-[15px] font-semibold flex items-center leading-[1]">
+                        <a href="/klantenportaal/account" class="py-[0.5rem] px-[0.9rem] bg-[#36291B] rounded-[5px] text-white text-[15px] font-semibold flex items-center leading-[1]">
                             <lord-icon class="mr-2"
                                 src="https://cdn.lordicon.com/hrjifpbq.json"
                                 trigger="hover"
