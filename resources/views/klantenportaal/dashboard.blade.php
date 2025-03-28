@@ -73,7 +73,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="3" class="px-4 py-4 text-white opacity-70">Geen offertes gevonden.</td>
+                            <td colspan="3" class="px-4 py-4 text-[#191919] opacity-80 text-sm">U heeft nog geen factuur aangevraagd.</td>
                         </tr>
                     @endforelse
                 </tbody>

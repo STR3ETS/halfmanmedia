@@ -135,7 +135,7 @@
         <h1 class="text-2xl text-[#191919] font-bold leading-[1] mb-2">Gegevens aanvullen</h1>
         <h2 class="text-lg text-[#191919] font-semibold leading-[1] opacity-50 mb-4">Offerte 2025{{ $offerte->id }}</h2>
         @if($statusContactgegevens['contactgegevens'] && $statusBedrijfsinformatie['bedrijfsinformatie'] && $statusDoel['doel'] && $statusBudget['budget'])
-        <p class="text-[#16c72e] text-sm font-semibold mb-4">Alle gegevens zijn compleet! Tijd om te relaxen.</p>
+        <p class="text-[#16c72e] text-sm font-semibold mb-4">Alle gegevens zijn compleet! Tijd om te relaxen.<br><span class="text-xs font-sembold text-[#191919]">Klik <a href="/klantenportaal/dashboard" class="underline">hier</a> om de status van je offerte te zien.</span></p>
         @endif
         <ul class="flex flex-col gap-[0.5rem]">
             <li onclick="editContactgegevens()" class="border-[1px] hover:border-[#E4AB6C] transition cursor-pointer bg-white p-[1.5rem] rounded-[10px] flex items-center justify-between">
