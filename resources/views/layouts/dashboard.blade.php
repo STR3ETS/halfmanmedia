@@ -70,7 +70,7 @@
                 </div>
             </a>
             <h3 class="unfolded text-md text-white font-bold leading-[1] -mb-[1rem] transition">
-                Goeiedag <span class="text-[#E4AB6C]" max-length="10">{{ $gebruiker->name }}</span>!
+                Goededag <span class="text-[#E4AB6C]" max-length="10">{{ $gebruiker->name }}</span>!
             </h3>
             <ul class="flex flex-col gap-[1rem]" id="sidemenu-options">
                 <li>

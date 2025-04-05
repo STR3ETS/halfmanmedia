@@ -28,6 +28,7 @@
         @endif
     </div>
     <div class="flex flex-col gap-[0.5rem]">
+        <h2 class="text-2xl text-[#191919] font-bold leading-[1] mb-2">Berichten</h2>
         <div class="p-4 border-[1px] border-gray-300 rounded-[10px]">
             <p class="text-[#191919] opacity-80 max-w-[25rem] text-[15px]"><strong>{{ $ticket->user->name }}</strong> op {{ $ticket->created_at->format('d-m-Y H:i') }}</p>
             <p class="text-[#191919] opacity-80 max-w-[25rem] text-[15px] mt-2">{{ $ticket->message }}</p>

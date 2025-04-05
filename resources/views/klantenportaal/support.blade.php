@@ -53,8 +53,8 @@
         <p class="text-[14px] text-[#191919] font-medium">Support</p>
     </div>
     <div id="support" class="flex flex-col gap-[1rem]">
-        <h1 class="text-2xl text-[#191919] font-bold leading-[1] mb-4">Support</h1>
         <div>
+            <h1 class="text-2xl text-[#191919] font-bold leading-[1] mb-4">Support</h1>
             <h3 class="text-xl text-[#191919] font-bold leading-[1] mb-4">🙋‍♂️ Stel gerust uw vraag!</h3>
             <p class="text-[#191919] opacity-80 max-w-[25rem] text-[15px] mb-6">Heb je hulp nodig met je website, webshop of facturatie of wil je aanpassingen door laten voeren? Bekijk hieronder veelgestelde vragen of neem direct contact op.</p>
             <div class="flex flex-col gap-[1rem]">
@@ -64,7 +64,7 @@
         </div>
     </div>
     <div>
-        <h2 class="text-2xl text-[#191919] font-bold leading-[1] mb-4 mt-8">Tickets</h2>
+        <h2 class="text-2xl text-[#191919] font-bold leading-[1] mb-4 mt-2">Tickets</h2>
         <div class="w-full bg-white rounded-[10px]">
         <table class="w-full text-left border-collapse">
                 <thead>
@@ -83,7 +83,7 @@
                             <td class="py-[1rem]">
                                 @if($ticket->status === 'in_behandeling')
                                     <p class="px-2 py-1 bg-orange-100 border-[1px] border-orange-500 text-orange-500 w-fit text-[12px] rounded-lg">
-                                        Open
+                                        Openstaand
                                     </p>
                                 @elseif($ticket->status === 'opgelost')
                                     <p class="px-2 py-1 bg-red-100 border-[1px] border-red-500 text-red-500 w-fit text-[12px] rounded-lg">
@@ -117,7 +117,7 @@
         </div>
     </div>
     <div class="w-full h-auto">
-    <h2 class="text-2xl text-[#191919] font-bold leading-[1] -mb-5 mt-8">Veelgestelde vragen</h2>
+    <h2 class="text-2xl text-[#191919] font-bold leading-[1] -mb-5 mt-2">Veelgestelde vragen</h2>
         <div class="elfsight-app-2174fea6-9523-4755-8f6b-d016f80ce402" data-elfsight-app-lazy></div>
     </div>
     <script>
