@@ -95,8 +95,13 @@
             </div>
         </div>
         <div class="w-full h-auto fixed top-0 left-0 right-0 ml-auto mr-auto z-[100] transition" id="navbar">
-            <div class="container py-[1.5rem] flex items-center justify-between">
-                <img src="assets/halfmanmedia-logo-gold-white.png" alt="HalfmanMedia" class="max-w-[30px] lg:max-w-[40px]">
+            <div class="container pb-[1.5rem] pt-[2rem] flex items-center justify-between">
+                <div class="flex items-center gap-[2rem]">
+                    <img src="assets/halfmanmedia-logo-gold-white.png" alt="HalfmanMedia" class="max-w-[30px] lg:max-w-[40px]">
+                    <div class="flex items-center gap-[1rem]">
+                        <a href="/klantenportaal/login" class="text-[#FFF8F0] text-[12px] opacity-50 hover:opacity-100 transition">Inloggen</a>
+                    </div>
+                </div>
                 <ul class="hidden lg:flex items-center gap-[1rem]">
                     <li><a href="/" class="px-[0.8rem] py-[0.4rem] rounded-[5px] hover:bg-[#36291B] transition text-[15px] text-[#FFF8F0] font-semibold">Home</a></li>
                     <li class="relative">

@@ -32,15 +32,15 @@
             <form id="editData-contactgegevens-form" class="hidden flex flex-col gap-[0.5rem]">
                 <div>
                     <label for="naam" class="block text-sm text-[#191919] font-semibold mb-1 mt-2">Waarmee mogen we u aanspreken?</label>
-                    <input type="text" name="naam" placeholder="bijv: Jan Jansen"
+                    <input readonly type="text" name="naam" placeholder="bijv: Jan Jansen"
                         value="{{ old('name') ?? $gebruiker->name }}"
-                        class="opacity-50 cursor-not-allowed w-full p-[0.75rem] rounded border border-gray-300 focus:border-[#E4AB6C] outline-none min-w-[300px]" />
+                        class="opacity-50 cursor-not-allowed w-full p-[0.75rem] rounded border border-gray-300 outline-none min-w-[300px]" />
                 </div>
                 <div>
                     <label for="naam" class="block text-sm text-[#191919] font-semibold mb-1 mt-2">Wat is uw e-mailadres?</label>
-                    <input type="email" name="email" placeholder="bijv: info@halfmanmedia.nl"
+                    <input readonly type="email" name="email" placeholder="bijv: info@halfmanmedia.nl"
                         value="{{ old('email') ?? $gebruiker->email }}"
-                        class="opacity-50 cursor-not-allowed w-full p-[0.75rem] rounded border border-gray-300 focus:border-[#E4AB6C] outline-none min-w-[300px]" />
+                        class="opacity-50 cursor-not-allowed w-full p-[0.75rem] rounded border border-gray-300 outline-none min-w-[300px]" />
                 </div>
             </form>
             <form id="editData-bedrijfsinformatie-form" action="{{ route('offerte.update', $offerte->id) }}" method="POST" class="hidden flex flex-col gap-[0.5rem]">
@@ -136,6 +136,8 @@
         <h2 class="text-lg text-[#191919] font-semibold leading-[1] opacity-50 mb-4">Offerte 2025{{ $offerte->id }}</h2>
         @if($statusContactgegevens['contactgegevens'] && $statusBedrijfsinformatie['bedrijfsinformatie'] && $statusDoel['doel'] && $statusBudget['budget'])
         <p class="text-[#16c72e] text-sm font-semibold mb-4">Alle gegevens zijn compleet! Tijd om te relaxen.<br><span class="text-xs font-sembold text-[#191919]">Klik <a href="/klantenportaal/dashboard" class="underline">hier</a> om de status van je offerte te zien.</span></p>
+        @else
+        <p class="text-red-500 text-sm font-semibold mb-4">Om je offerte af te ronden hebben we nog een paar details nodig. Dit kost je maar 1-2 minuten.</p>
         @endif
         <ul class="flex flex-col gap-[0.5rem]">
             <li onclick="editContactgegevens()" class="border-[1px] hover:border-[#E4AB6C] transition cursor-pointer bg-white p-[1.5rem] rounded-[10px] flex items-center justify-between">

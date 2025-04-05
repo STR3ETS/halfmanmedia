@@ -10,6 +10,7 @@ use App\Models\Offerte;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use OpenAI\Laravel\Facades\OpenAI;
 
 class OfferteController extends Controller
 {

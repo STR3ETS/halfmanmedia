@@ -47,7 +47,7 @@
                                             style="width:20px;height:20px">
                                         </lord-icon>
                                         <p class="px-2 py-1 bg-[#E83151] bg-opacity-10 border-[1px] border-[#E83151] text-[#E83151] w-fit text-[12px] rounded-lg">
-                                            Meer gegevens nodig
+                                            Klik om ontbrekende gegevens toe te voegen
                                         </p>
                                     </div>
                                 @endif

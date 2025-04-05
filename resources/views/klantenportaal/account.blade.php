@@ -8,22 +8,18 @@
     </div>
     <div id="account">
         <h1 class="text-2xl text-[#191919] font-bold leading-[1] mb-4">Account</h1>
-        <div class="bg-white p-[1.5rem] rounded-[10px] mb-[0.5rem]">
+        <div class="max-w-[500px] bg-white p-[1.5rem] rounded-[10px] mb-[0.5rem]">
             <form id="editData-contactgegevens-form" action="{{ route('klantenportaal.account.contactgegevensupdate') }}" method="POST" class="flex flex-col gap-[0.5rem]">
                 @csrf
                 @if(session('success_contact'))
-                    <p class="text-green-600 text-sm mb-4 bg-green-100 p-3 rounded border border-green-300">
-                        {{ session('success') }}
+                    <p class="w-fit text-green-600 text-sm mb-4 bg-green-100 p-3 rounded border border-green-300">
+                        Gegevens succesvol bijgewerkt!
                     </p>
                 @endif
                 @if($errors->has('naam') || $errors->has('email'))
-                    <ul class="text-red-600 text-sm mb-4 bg-red-100 p-3 rounded border border-red-300 list-disc pl-5">
-                        @foreach($errors->all() as $error)
-                            @if(str_contains($error, 'naam') || str_contains($error, 'email'))
-                                <li>{{ $error }}</li>
-                            @endif
-                        @endforeach
-                    </ul>
+                    <p class="w-fit text-red-600 text-sm mb-4 bg-red-100 p-3 rounded border border-red-300">
+                        Zorg dat alle velden correct ingevuld zijn.
+                    </p>
                 @endif
                 <div>
                     <label for="naam" class="block text-sm text-[#191919] font-semibold mb-1">Uw naam</label>
@@ -43,16 +39,16 @@
         </div>
     </div>
     <div id="change-password">
-        <h1 class="text-2xl text-[#191919] font-bold leading-[1] mb-4">Wachtwoord wijzigen</h1>
-        <div class="bg-white p-[1.5rem] rounded-[10px]">
+        <h2 class="text-2xl text-[#191919] font-bold leading-[1] mb-4">Wachtwoord wijzigen</h2>
+        <div class="max-w-[500px] bg-white p-[1.5rem] rounded-[10px]">
             @if(session('success_password'))
-                <p class="text-green-600 text-sm mb-4 bg-green-100 p-3 rounded border border-green-300">
+                <p class="w-fit text-green-600 text-sm mb-4 bg-green-100 p-3 rounded border border-green-300">
                     Wachtwoord is succesvol bijgewerkt!
                 </p>
             @endif
             @if($errors->has('current_password') || $errors->has('new_password') || $errors->has('new_password_confirmation'))
-                <p class="text-red-600 text-sm mb-4 bg-red-100 p-3 rounded border border-red-300">
-                    Oei... er is iets misgegaan. Controleer de velden.
+                <p class="w-fit text-red-600 text-sm mb-4 bg-red-100 p-3 rounded border border-red-300">
+                    Zorg dat alle velden correct ingevuld zijn.
                 </p>
             @endif
             <form id="editData-wachtwoord-form" action="{{ route('klantenportaal.account.passwordupdate') }}" method="POST" class="flex flex-col gap-[0.5rem]">

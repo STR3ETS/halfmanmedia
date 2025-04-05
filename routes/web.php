@@ -8,7 +8,11 @@ use App\Http\Controllers\OfferteController;
 use App\Http\Controllers\OfferteAanvullenController;
 use App\Http\Controllers\FacturatieController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\BestandenController;
+use App\Http\Controllers\HandleidingController;
+use App\Http\Controllers\SupportController;
 use App\Http\Controllers\AuthController;
+
 
 // PAGINA'S
 Route::get('/', function () { return view('welcome'); });
@@ -20,6 +24,7 @@ Route::get('/webshop', function () { return view('webshop'); });
 // KLANTENPORTAAL
 Route::get('/klantenportaal/login', [AuthController::class, 'index'])->name('klantenportaal.login');
 Route::post('/klantenportaal/login', [AuthController::class, 'login'])->name('klantenportaal.login.submit');
+Route::get('/login', function () { return redirect()->route('klantenportaal.login'); })->name('login');
 
 Route::get('/klantenportaal/dashboard', function () {
     $gebruiker = Auth::user();
@@ -32,14 +37,29 @@ Route::get('/klantenportaal/dashboard', function () {
         return view('klantenportaal.dashboard', compact('gebruiker', 'offertes', 'bedrijfsinfoCompleet'));
 })->middleware('auth')->name('klantenportaal.dashboard');
 
+
 Route::get('/klantenportaal/offerte/{id}', [OfferteController::class, 'show'])->name('offerte.show');
 Route::post('/klantenportaal/offerte/{id}/update', [OfferteAanvullenController::class, 'update'])->middleware('auth')->name('offerte.update');
 
+
 Route::get('/klantenportaal/facturatie', [FacturatieController::class, 'index'])->middleware('auth')->name('klantenportaal.facturatie');
 
+
+Route::get('/klantenportaal/bestanden', [BestandenController::class, 'index'])->middleware('auth')->name('klantenportaal.bestanden');
+
+
+Route::get('/klantenportaal/handleiding', [HandleidingController::class, 'index'])->middleware('auth')->name('klantenportaal.handleiding');
+
+
+Route::get('/klantenportaal/support', [SupportController::class, 'index'])->middleware('auth')->name('klantenportaal.support');
+Route::post('/klantenportaal/support/ticket/create', [SupportController::class, 'create'])->middleware('auth')->name('klantenportaal.support.ticket.create');
+Route::post('/klantenportaal/support/{ticket}/message', [SupportController::class, 'addMessage'])->middleware('auth')->name('klantenportaal.support.message');
+Route::get('/klantenportaal/support/ticket/{id}', [SupportController::class, 'show'])->middleware('auth')->name('klantenportaal.ticket.show');
+
+
 Route::get('/klantenportaal/account', [AccountController::class, 'index'])->middleware('auth')->name('klantenportaal.account');
-Route::post('/klantenportaal/account/wachtwoord-wijzigen', [AccountController::class, 'updatePassword'])->name('klantenportaal.account.passwordupdate');
-Route::post('/klantenportaal/account/contactgegevens-wijzigen', [AccountController::class, 'updateContactgegevens'])->name('klantenportaal.account.contactgegevensupdate');
+Route::post('/klantenportaal/account/wachtwoord-wijzigen', [AccountController::class, 'updatePassword'])->middleware('auth')->name('klantenportaal.account.passwordupdate');
+Route::post('/klantenportaal/account/contactgegevens-wijzigen', [AccountController::class, 'updateContactgegevens'])->middleware('auth')->name('klantenportaal.account.contactgegevensupdate');
 
 Route::post('/logout', function (Request $request) {
     \Auth::logout();
