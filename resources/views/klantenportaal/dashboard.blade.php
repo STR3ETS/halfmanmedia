@@ -10,7 +10,7 @@
     <div>
         <h1 class="text-2xl text-[#191919] font-bold leading-[1] mb-4">👋 Goededag, {{ $gebruiker->name }}</h1>
         <p class="text-[#191919] opacity-80 max-w-[25rem] text-[15px] mb-4">Dit is jouw centrale plek voor alles rondom jouw project bij HalfmanMedia. Hulp nodig? We staan voor je klaar.</p>
-        <div class="flex flex-col gap-[0.5rem]">
+        <div class="flex flex-col gap-[0.5rem] mb-6">
             @foreach($offertes as $offerte)
                 @if($offerte->status === 'Meer gegevens nodig')
                     <p class="px-2 py-1 bg-orange-100 border-[1px] border-orange-500 text-orange-500 w-fit text-[12px] rounded-lg font-semibold">
@@ -22,6 +22,12 @@
                     </p>
                 @endif
             @endforeach
+        </div>
+        <h2 class="text-lg text-[#191919] font-bold leading-[1] mb-4">🔧 Wat wil je vandaag doen?</h2>
+        <div class="flex items-center gap-[0.5rem]">
+            <a href="/gratis-offerte" class="w-fit cursor-pointer px-[1.25rem] py-[0.65rem] rounded-[5px] bg-[#E4AB6C] hover:bg-[#FFF8F0] hover:text-black transition text-[12px] text-[#FFF8F0] font-semibold">Nieuwe offerte aanvragen</a>
+            <a href="/klantenportaal/support" class="w-fit cursor-pointer px-[1.25rem] py-[0.65rem] rounded-[5px] bg-[#E4AB6C] hover:bg-[#FFF8F0] hover:text-black transition text-[12px] text-[#FFF8F0] font-semibold">Support ticket openen</a>
+            <a href="/klantenportaal/handleiding" class="w-fit cursor-pointer px-[1.25rem] py-[0.65rem] rounded-[5px] bg-[#E4AB6C] hover:bg-[#FFF8F0] hover:text-black transition text-[12px] text-[#FFF8F0] font-semibold">Handleiding bekijken</a>
         </div>
     </div>
 
@@ -49,7 +55,7 @@
                                     </p>
                                 @elseif($offerte->status === 'Te ondertekenen')
                                     <p class="px-2 py-1 bg-cyan-100 border-[1px] border-cyan-500 text-cyan-500 w-fit text-[12px] rounded-lg">
-                                        <strong>Uw offerte staat klaar!</strong> Bekijk hem nu
+                                        <strong>Uw offerte staat klaar!</strong> Bekijk 'em nu
                                     </p>
                                 @elseif($offerte->status === 'Ondertekend')
                                     <p class="px-2 py-1 bg-green-100 border-[1px] border-green-500 text-green-500 w-fit text-[12px] rounded-lg">
@@ -65,7 +71,7 @@
                                             style="width:20px;height:20px">
                                         </lord-icon>
                                         <p class="px-2 py-1 bg-[#E83151] bg-opacity-10 border-[1px] border-[#E83151] text-[#E83151] w-fit text-[12px] rounded-lg">
-                                            Klik om ontbrekende gegevens toe te voegen
+                                            <strong>We missen enkele gegevens!</strong> Klik hier om aan te vullen
                                         </p>
                                     </div>
                                 @endif
